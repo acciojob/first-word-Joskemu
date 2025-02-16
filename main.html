@@ -1,16 +1,47 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Word Finder</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <h1>Find the First Word in a String</h1>
+    <label for="inputString">Enter a String:</label>
+    <input type="text" id="inputString" placeholder="Enter your text here" />
 
+    <button onclick="displayFirstWord()">Get First Word</button>
+
+    <p id="result"></p>
+
+    <script type="text/javascript">
+        // Function to get the first word of the string
+        function firstWord(str) {
+            if (str.trim() === '') {
+                return ''; // return empty string if the input is empty
+            }
+            let spaceIndex = str.indexOf(' ');
+            if (spaceIndex === -1) {
+                return str; // No space found, return the whole string
+            }
+            return str.slice(0, spaceIndex); // Return substring before the first space
+        }
+
+        // Function to display the result
+        function displayFirstWord() {
+            // Get the input string value
+            const inputStr = document.getElementById('inputString').value;
+
+            // Call the firstWord function
+            const result = firstWord(inputStr);
+
+            // Display the result in the paragraph
+            document.getElementById('result').textContent = `First Word: ${result}`;
+        }
+    </script>
 </body>
 
 </html>
